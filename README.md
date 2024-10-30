@@ -19,7 +19,7 @@ Smart IoT Building System
 
 데이터 베이스
 - HW/Language/OS : RaspberryPi 4 / SQL / Raspbian
-- Software : MariaDB,myasql
+- Software : MariaDB,Myasql
 - 데이터베이스 구축 및 필요 데이터 관리
 
 
