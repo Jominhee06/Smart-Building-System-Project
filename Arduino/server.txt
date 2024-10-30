@@ -1,0 +1,230 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <pthread.h>
+#include <mysql/mysql.h>  // MariaDB/MySQL 라이브러리
+
+#define PORT 8080
+#define BUF_SIZE 1024
+
+pthread_mutex_t capture_mutex;  // 얼굴 인식 프로그램 실행을 위한 뮤텍스
+
+// 클라이언트 타입 정의
+typedef enum {
+    CLIENT_UNKNOWN,
+    CLIENT_ESP32,
+    CLIENT_FR,
+    CLIENT_WEB
+} ClientType;
+
+// MariaDB 연결 초기화 함수
+MYSQL* init_db() {
+    MYSQL *conn = mysql_init(NULL);
+
+    if (conn == NULL) {
+        fprintf(stderr, "mysql_init() failed\n");
+        return NULL;
+    }
+
+    // MariaDB 서버에 연결
+    if (mysql_real_connect(conn, "localhost", "root", "1234", "smart_building", 0, NULL, 0) == NULL) {
+        fprintf(stderr, "mysql_real_connect() failed\n");
+        mysql_close(conn);
+        return NULL;
+    }
+
+    return conn;
+}
+
+// 이미지 경로를 DB에 저장하는 함수
+void save_image_path(MYSQL *conn, const char *image_path, const char *room_number) {
+    char query[BUF_SIZE];
+
+    // 경로를 INSERT하는 SQL 쿼리 작성
+    snprintf(query, BUF_SIZE, "INSERT INTO Captures (null,image_path, room_number) VALUES ('%s', '%s')", image_path, room_number);		// timestamp 넣는거 찾아야함
+
+    if (mysql_query(conn, query)) {
+        fprintf(stderr, "INSERT error: %s\n", mysql_error(conn));
+    } else {
+        printf("Image path '%s' saved for room '%s' in database.\n", image_path, room_number);
+    }
+}
+
+// 도어락 상태를 업데이트하는 함수
+void update_lock_status(MYSQL *conn, const char *room_number, const char *status) {
+    char query[BUF_SIZE];
+
+    // 도어락 상태 업데이트 쿼리
+    snprintf(query, BUF_SIZE, "UPDATE Rooms SET lock_status = '%s' WHERE room_number = '%s'", status, room_number);
+
+    if (mysql_query(conn, query)) {
+        fprintf(stderr, "UPDATE error: %s\n", mysql_error(conn));
+    } else {
+        printf("Lock status for room '%s' updated to '%s'.\n", room_number, status);
+    }
+}
+
+// 클라이언트 메시지 처리 함수
+void handle_message(ClientType client_type, char* message, MYSQL *conn) {
+    char room_number[20];
+
+    switch (client_type) {
+        case CLIENT_ESP32:
+            // "ROOM_X:wrong_password" 형식의 메시지 처리
+            sscanf(message, "%[^:]:", room_number);  // 방 번호 추출
+            if (strstr(message, "wrong_password") != NULL) {
+                printf("ESP32: Incorrect password attempt in room '%s'. Capturing image...\n", room_number);
+
+                pthread_mutex_lock(&capture_mutex);
+
+                // 얼굴 인식 프로그램 실행
+                int ret = system("./capture_face");
+                if (ret == -1) {
+                    perror("Failed to execute face capture program");
+                }
+
+                pthread_mutex_unlock(&capture_mutex);
+            }
+            break;
+
+        case CLIENT_FR: {
+            char* token = strtok(message, ":");
+            if (token != NULL && strcmp(token, "seccess") == 0) {
+                char* image_path = strtok(NULL, ":");
+                if (image_path != NULL) {
+                    sscanf(image_path, "%[^:]:", room_number);  // 방 번호 추출
+                    printf("FR: Facial recognition successful for room '%s'. Image path: %s\n", room_number, image_path);
+
+                    // MariaDB에 이미지 경로 저장
+                    save_image_path(conn, image_path, room_number);
+                    // 도어락 상태 업데이트
+                    update_lock_status(conn, room_number, "unlocked");
+                }
+            }
+            break;
+        }
+
+        case CLIENT_WEB:
+            if (strcmp(message, "status_request") == 0) {
+                printf("WEB: Status request received.\n");
+            }
+            break;
+
+        default:
+            printf("Unknown client type. Message: %s\n", message);
+            break;
+    }
+}
+
+// 클라이언트 처리를 위한 스레드 함수
+void* handle_client(void* arg) {
+    int client_sock = *((int*)arg);
+    free(arg);
+    char buffer[BUF_SIZE];
+    int n;
+
+    // MariaDB 연결
+    MYSQL *conn = init_db();
+    if (conn == NULL) {
+        close(client_sock);
+        return NULL;
+    }
+
+    while ((n = read(client_sock, buffer, BUF_SIZE - 1)) > 0) {
+        buffer[n] = '\0';
+        printf("Received from client: %s\n", buffer);
+
+        ClientType client_type = CLIENT_UNKNOWN;
+        char* message = NULL;
+
+        if (strncmp(buffer, "ESP:", 4) == 0) {
+            client_type = CLIENT_ESP32;
+            message = buffer + 4;
+        }
+        else if (strncmp(buffer, "FR:", 3) == 0) {
+            client_type = CLIENT_FR;
+            message = buffer + 3;
+        }
+        else if (strncmp(buffer, "WEB:", 4) == 0) {
+            client_type = CLIENT_WEB;
+            message = buffer + 4;
+        }
+
+        if (message != NULL) {
+            handle_message(client_type, message, conn);
+        }
+
+        write(client_sock, "ACK", 3);
+    }
+
+    mysql_close(conn);  // MariaDB 연결 해제
+    close(client_sock);
+    return NULL;
+}
+
+int main() {
+    int server_sock, client_sock, *new_sock;
+    struct sockaddr_in server_addr, client_addr;
+    socklen_t addr_len = sizeof(client_addr);
+
+    if (pthread_mutex_init(&capture_mutex, NULL) != 0) {
+        perror("Mutex initialization failed");
+        exit(EXIT_FAILURE);
+    }
+
+    server_sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (server_sock == -1) {
+        perror("Socket creation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+    server_addr.sin_port = htons(PORT);
+
+    if (bind(server_sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
+        perror("Bind failed");
+        close(server_sock);
+        exit(EXIT_FAILURE);
+    }
+
+    if (listen(server_sock, 10) < 0) {
+        perror("Listen failed");
+        close(server_sock);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Server listening on port %d...\n", PORT);
+
+    while (1) {
+        client_sock = accept(server_sock, (struct sockaddr*)&client_addr, &addr_len);
+        if (client_sock < 0) {
+            perror("Client accept failed");
+            continue;
+        }
+
+        new_sock = malloc(sizeof(int));
+        if (new_sock == NULL) {
+            perror("Malloc failed");
+            close(client_sock);
+            continue;
+        }
+        *new_sock = client_sock;
+
+        pthread_t client_thread;
+        if (pthread_create(&client_thread, NULL, handle_client, (void*)new_sock) != 0) {
+            perror("Thread creation failed");
+            close(client_sock);
+            free(new_sock);
+            continue;
+        }
+
+        pthread_detach(client_thread);
+    }
+
+    pthread_mutex_destroy(&capture_mutex);
+    close(server_sock);
+    return 0;
+}
