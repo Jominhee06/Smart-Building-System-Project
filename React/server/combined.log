@@ -1,0 +1,53 @@
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T02:35:06.796Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:18:25.863Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:19:27.189Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:22:44.644Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:28:56.440Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:37:22.290Z"}
+{"level":"warn","message":"Invalid login attempt for user  user1","timestamp":"2024-10-19T03:41:20.006Z"}
+{"level":"warn","message":"Invalid login attempt for user  user1","timestamp":"2024-10-19T03:41:28.621Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:41:42.261Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:41:55.598Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:42:11.600Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:45:41.476Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:49:37.013Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:56:32.697Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T03:56:55.858Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T04:00:53.890Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T04:02:28.404Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T04:25:26.146Z"}
+{"level":"info","message":"User user1 logged in","timestamp":"2024-10-19T04:26:39.197Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-19T04:30:37.380Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-19T04:40:10.424Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-19T05:03:17.586Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-19T05:16:59.366Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-19T09:37:21.864Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-20T01:35:10.931Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-20T01:40:02.503Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-20T01:57:39.635Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-20T16:49:30.392Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T09:56:33.996Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T10:32:09.178Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T16:07:32.105Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T17:59:08.639Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T18:01:04.822Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T18:07:06.381Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T19:34:10.195Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T19:49:45.721Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T19:51:59.400Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T19:59:25.792Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-21T20:00:29.999Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-22T06:01:56.643Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T07:10:46.857Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T07:17:43.247Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T07:17:53.946Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T07:26:31.793Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T07:28:13.983Z"}
+{"level":"info","message":"MySQL connected successfully","timestamp":"2024-10-23T07:29:46.182Z"}
+{"level":"info","message":"MySQL connected successfully","timestamp":"2024-10-23T07:30:20.852Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T08:38:31.928Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T08:38:58.089Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T08:42:38.115Z"}
+{"level":"error","message":"MySQL connection error:","timestamp":"2024-10-23T08:43:36.913Z"}
+{"level":"info","message":"MySQL connected successfully","timestamp":"2024-10-23T08:47:32.075Z"}
+{"level":"info","message":"MySQL connected successfully","timestamp":"2024-10-23T08:50:00.794Z"}
