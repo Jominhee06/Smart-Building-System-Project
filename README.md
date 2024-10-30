@@ -12,19 +12,19 @@ Smart IoT Building System
 
 
 웹 서버
-- HW/Language/OS : PC / JavaScript / WINDOWS
+- HW/Language/OS : PC / JavaScript / WINDOWS / Jetson nano
 - 통신 방식 / Runtime : HTTP / Node.js(Express)
 - 백엔드 서버와 프론트엔드를 이어주는 웹서버 제작
 
 
 데이터 베이스
-- HW/Language/OS : RaspberryPi 4 / SQL / Raspbian
+- HW/Language/OS : Jetson nano / SQL / Raspbian
 - Software : MariaDB,Myasql
 - 데이터베이스 구축 및 필요 데이터 관리
 
 
 얼굴 인식
-- HW/Language/OS : RaspberryPi 4 / Python / Raspbian
+- HW/Language/OS : Jetson nano / Python / Raspbian
 - Library : OpenCV
 - Sensor : Motion Sensor + LED
 상세 설명
@@ -42,10 +42,17 @@ ATmega2560
 작품 특징
 - AI,IoT,무선 Network(TCP/IP) 융복합 플랫폼 구축
 - 웹 애플리케이션 : React,Nignx,Express
-- 데이터베이스 서버 : mariaDB
-- IoT 디바이스 : ESP32,Motor,PDLC film,keypad,RFID,TCP/IP
+- 데이터베이스 서버 : MariaDB
+- IoT 디바이스 : ESP32,Motor,PDLC Film,Keypad,RFID,TCP/IP
 - AI : DNN(얼굴인식),LBPH(얼굴검출),CUDA(병렬처리)
 - 플랫폼 서버 : Linux/Ubuntu OS, TCP/IP
+
+Nvidia Jetson (임베디드 컴퓨팅 보드)
+- Tegra 프로세서 장착하고 있다.
+- 인공지능 연산에 엔비디아의 고성능 GPU를 활용할 수 있어 최근에는 AI가 접목된 프로젝트의 메인보드로도 널리 쓰이는 추세
+- TensorFlow,PyTorch 등 여러 딥러닝 프레임워크와도 궁합이 좋다.
+
+
 
 
 
