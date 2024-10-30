@@ -1,3 +1,8 @@
+Smart IoT Building System
+- AI 얼굴인식 및 패스워드(또는 RFID)를 활용한 빌딩 내 출입 보안 강화
+- 웹 브라우저를 통한 원격 컨트롤 및 출입 로그 확인
+- Smart IoT Building 데이터 수집/분석을 통해 거주민에게 유용한 관제 서비스 제공
+
 <img width="645" alt="img" src="https://github.com/user-attachments/assets/1acb00e2-289c-4872-8bdf-a63b1aed2a42">
 
 프론트 엔드
@@ -14,7 +19,7 @@
 
 데이터 베이스
 - HW/Language/OS : RaspberryPi 4 / SQL / Raspbian
-- Software : Mysql
+- Software : MariaDB,myasql
 - 데이터베이스 구축 및 필요 데이터 관리
 
 
@@ -33,6 +38,14 @@ ATmega2560
 - Sensor : Buzzer, Servo motor, touch keypad, RFID
 상세 설명
 - (HW)도어락을 제어하기 위한 센싱 데이터 코드- (SW)원격제어를 위한 Esp 소켓 통신 코드
+
+작품 특징
+- AI,IoT,무선 Network(TCP/IP) 융복합 플랫폼 구축
+- 웹 애플리케이션 : React,Nignx,Express
+- 데이터베이스 서버 : mariaDB
+- IoT 디바이스 : ESP32,Motor,PDLC film,keypad,RFID,TCP/IP
+- AI : DNN(얼굴인식),LBPH(얼굴검출),CUDA(병렬처리)
+- 플랫폼 서버 : Linux/Ubuntu OS, TCP/IP
 
 
 
