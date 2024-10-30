@@ -1,0 +1,31 @@
+모션센서 코드
+
+int ledPin = 8;          // LED 핀
+int motionSensorPin = 7; // 모션 센서 핀
+int motionState = 0;     // 모션 상태
+unsigned long ledOnTime = 0; 
+int ledDuration = 5000;  // LED가 켜진 상태를 유지하는 시간
+
+void setup() {
+  pinMode(ledPin, OUTPUT); // LED 핀을 출력으로 설정
+  pinMode(motionSensorPin, INPUT); // 모션 센서 핀을 입력으로 설정
+  Serial.begin(9600); // 시리얼 통신 시작
+}
+
+void loop() {
+  motionState = digitalRead(motionSensorPin); // 모션 센서의 상태 읽기
+
+  if (motionState == HIGH) { // 모션 감지 시
+    digitalWrite(ledPin, HIGH); // LED 켜기
+    ledOnTime = millis(); // 현재 시간을 저장
+    Serial.println("Motion detected!"); // 모션 감지 메시지 출력
+  } 
+  
+  // LED가 켜져 있고, 지정된 시간 이후인 경우
+  if (digitalRead(ledPin) == HIGH && millis() - ledOnTime >= ledDuration) {
+    digitalWrite(ledPin, LOW); // LED 끄기
+    Serial.println("LED turned off"); // LED 꺼짐 메시지 출력
+  }
+
+  delay(100); // 100ms 지연
+}
