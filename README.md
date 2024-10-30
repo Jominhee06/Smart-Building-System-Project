@@ -1,24 +1,24 @@
 <img width="645" alt="img" src="https://github.com/user-attachments/assets/1acb00e2-289c-4872-8bdf-a63b1aed2a42">
 
-  프론트 엔드
+프론트 엔드
 - PC / JavaScript, CSS / WINDOWS
 - React, Visual studio code
 - UI 디자인을 React를 사용하여 웹사이트 제작
 
 
-  웹 서버
+웹 서버
 - HW/Language/OS : PC / JavaScript / WINDOWS
 - 통신 방식 / Runtime : HTTP / Node.js(Express)
 - 백엔드 서버와 프론트엔드를 이어주는 웹서버 제작
 
 
-  데이터 베이스
+데이터 베이스
 - HW/Language/OS : RaspberryPi 4 / SQL / Raspbian
 - Software : Mysql
 - 데이터베이스 구축 및 필요 데이터 관리
 
 
-  얼굴 인식
+얼굴 인식
 - HW/Language/OS : RaspberryPi 4 / Python / Raspbian
 - Library : OpenCV
 - Sensor : Motion Sensor + LED
@@ -27,7 +27,7 @@
 - 사용자 인식을 위한 모션센서 및 LED 제어
 
 
-  ATmega2560
+ATmega2560
 - HW/Language/OS : Arduino Uno, Mega / C.C++ / WINDOWS
 - Library : WifiEsp, Servo, keypad
 - Sensor : Buzzer, Servo motor, touch keypad, RFID
