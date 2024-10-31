@@ -3,6 +3,34 @@
 - 웹 브라우저를 통한 원격 컨트롤 및 출입 로그 확인
 - Smart IoT Building 데이터 수집/분석을 통해 거주민에게 유용한 관제 서비스 제공
 
+# 네트워크 및 하드웨어 구조
+![image](https://github.com/user-attachments/assets/f1e4fd2a-b86b-435c-b626-df1a73550b3b)
+
+![image](https://github.com/user-attachments/assets/5d402649-0491-42a8-8fc0-8fa90939ecab)
+
+
+# 흐름도
+- 초기설정
+1. 웹 페이지를 통해 Login -> RoomNumber,LoginPW
+   -> UPDATE root SET LoginPW = '비밀번호' WHERE RoomNO = '방번호';
+
+2. 비밀번호 변경 페이지에서 PersonalPW를 변경하면 데이터 베이스 UPDATE
+   -> UPDATE Personal SET PersonalPW = '비밀번호' WHERE RoomNO = '방번호';  
+
+3. 현관문에서 얼굴인식을 위한 사진 찍기 -> 학습 완료까지 대기 
+
+- 실행순서
+1. 현관문에서 얼굴인식
+   1) 인식된 얼굴이 일치 시 : 현관문 키패드 활성화 -> 비밀번호 or RFID 입력(‘비밀번호#’)
+     - 입력된 비밀번호 or RFID가 일치: 도어락 열림
+     - 불일치 : 닫힘 상태 유지+ 틀림 부저음 + 재입력
+     - 5회 이상 불일치 : Time, Capture Image(디렉토리 경로)를 DB에 저장
+                   + 경고음 + 1분 대기(delay)
+
+   2) 불일치 시 : 현관문 키패드 비활성화
+      - 얼굴인식이 5회 이상 틀리면 Time, Capture Image(디렉토리 경로) DB에 저장
+                   + 경고음 울림 + 1분
+
 <img width="645" alt="img" src="https://github.com/user-attachments/assets/1acb00e2-289c-4872-8bdf-a63b1aed2a42">
 
 # 프론트 엔드
