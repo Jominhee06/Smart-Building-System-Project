@@ -1,4 +1,4 @@
-## Smart IoT Building System
+![header](https://capsule-render.vercel.app/api?type=waving&&&color=0:00BCF2,100:2158A8&height=250&width=867.2&section=header&text=SmartBuilding%20SecuritySystem&fontSize=40&fontAlignY=40&fontColor=skyblue)
 - AI 얼굴인식 및 패스워드(또는 RFID)를 활용한 빌딩 내 출입 보안 강화
 - 웹 브라우저를 통한 원격 컨트롤 및 출입 로그 확인
 - Smart IoT Building 데이터 수집/분석을 통해 거주민에게 유용한 관제 서비스 제공
