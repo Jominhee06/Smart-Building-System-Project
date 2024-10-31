@@ -57,13 +57,13 @@
 
 # 데이터 베이스
 - HW/Language/OS : Jetson nano / SQL / Raspbian
-- Software : MariaDB,Myasql
+- Software : MariaDB
 - 데이터베이스 구축 및 필요 데이터 관리
 
 
 # 얼굴 인식
 - HW/Language/OS :  Jetson nano / Python / Raspbian
-- Library : OpenCV
+- Library : OpenCV,DNN
 - Sensor : Motion Sensor + LED
 상세 설명
 - 얼굴인식을 위한 AI모델 생성 및 유효값 추출
