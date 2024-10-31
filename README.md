@@ -44,13 +44,13 @@
 <img width="645" alt="img" src="https://github.com/user-attachments/assets/1acb00e2-289c-4872-8bdf-a63b1aed2a42">
 
 # 프론트 엔드
-- PC / JavaScript, CSS / Figma / WINDOWS
+- HW/Language/OS :  PC / JavaScript, CSS / Figma / WINDOWS
 - React, Visual studio code
 - UI 디자인을 React를 사용하여 웹사이트 제작
 
 
 # 웹 서버
-- HW/Language/OS : PC / JavaScript / WINDOWS / Jetson nano
+- HW/Language/OS :  PC / JavaScript / WINDOWS / Jetson nano
 - 통신 방식 / Runtime : HTTP / Node.js(Express)
 - 백엔드 서버와 프론트엔드를 이어주는 웹서버 제작
 
@@ -62,7 +62,7 @@
 
 
 # 얼굴 인식
-- HW/Language/OS : Jetson nano / Python / Raspbian
+- HW/Language/OS :  Jetson nano / Python / Raspbian
 - Library : OpenCV
 - Sensor : Motion Sensor + LED
 상세 설명
@@ -71,7 +71,7 @@
 
 
 # ATmega2560
-- HW/Language/OS : Arduino Uno, Mega / C.C++ / WINDOWS
+- HW/Language/OS :  Arduino Uno, Mega / C.C++ / WINDOWS
 - Library : WifiEsp, Servo, keypad
 - Sensor : Buzzer, Servo motor, touch keypad, RFID
 상세 설명
