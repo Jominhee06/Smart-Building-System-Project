@@ -1,16 +1,18 @@
-# Smart IoT Building System
+## Smart IoT Building System
 - AI 얼굴인식 및 패스워드(또는 RFID)를 활용한 빌딩 내 출입 보안 강화
 - 웹 브라우저를 통한 원격 컨트롤 및 출입 로그 확인
 - Smart IoT Building 데이터 수집/분석을 통해 거주민에게 유용한 관제 서비스 제공
 - 2단계 인증을 통한 보안 집중 도어락
 
-# 네트워크 및 하드웨어 구조
+## 네트워크 및 하드웨어 구조
 ![image](https://github.com/user-attachments/assets/f1e4fd2a-b86b-435c-b626-df1a73550b3b)
 
 ![image](https://github.com/user-attachments/assets/5d402649-0491-42a8-8fc0-8fa90939ecab)
 
+## 플로우차트
+<img src = "https://github.com/user-attachments/assets/64728c41-3f45-49c9-a907-00870a79c337" width="100%" height="100%">
 
-# 흐름도
+## 흐름도
 - 초기설정
 1. 웹 페이지를 통해 Login -> RoomNumber,LoginPW
    -> UPDATE root SET LoginPW = '비밀번호' WHERE RoomNO = '방번호';
@@ -33,7 +35,10 @@
       - 얼굴인식이 5회 이상 틀리면 Time, Capture Image(디렉토리 경로) DB에 저장
                    + 경고음 울림 + 1분
 
-# 웹 및 데이터 베이스 구조
+## 시스템 구성도
+<img src = "https://github.com/user-attachments/assets/de16e779-babc-4d73-aab6-fff3196a56a6" width="100%" height="100%">
+
+## 웹 및 데이터 베이스 구조
 <img width="645" alt="img" src="https://github.com/user-attachments/assets/1acb00e2-289c-4872-8bdf-a63b1aed2a42">
 
 # 프론트 엔드
