@@ -25,7 +25,7 @@
 3. 현관문에서 얼굴인식을 위한 사진 찍기 -> 학습 완료까지 대기 
 
 
-- 실행순서
+# 실행순서
 1. 현관문에서 얼굴인식
    1) 인식된 얼굴이 일치 시 : 현관문 키패드 활성화 -> 비밀번호 or RFID 입력(‘비밀번호#’)
      - 입력된 비밀번호 or RFID가 일치: 도어락 열림
@@ -74,7 +74,8 @@
 - HW/Language/OS :  Arduino Uno, Mega / C.C++ / WINDOWS
 - Library : WifiEsp, Servo, keypad
 - Sensor : Buzzer, Servo motor, touch keypad, RFID
-상세 설명
+
+# 상세 설명
 - (HW)도어락을 제어하기 위한 센싱 데이터 코드- (SW)원격제어를 위한 Esp 소켓 통신 코드
 
 # 작품 특징
