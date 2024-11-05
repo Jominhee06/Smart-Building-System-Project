@@ -46,7 +46,7 @@
 # 프론트 엔드
 - HW/Language/OS :  PC / JavaScript, CSS / Figma / WINDOWS
 - React, Visual studio code
-- UI 디자인을 React를 사용하여 웹사이트 제작
+- UI 디자인을 React를 사용하여 웹 사이트 및 애플리케이션 제작
 
 
 # 웹 서버
